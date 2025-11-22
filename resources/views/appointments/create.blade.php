@@ -15,14 +15,14 @@
                         <!-- Patient Name -->
                         <div>
                             <x-input-label for="patient_name" :value="__('Patient Name')" />
-                            <x-text-input id="patient_name" name="patient_name" type="text" class="mt-1 block w-full" :value="old('patient_name')" required />
+                            <x-text-input id="patient_name" name="patient_name" type="text" class="mt-1 block w-full" :value="old('patient_name')" />
                             <x-input-error :messages="$errors->get('patient_name')" class="mt-2" />
                         </div>
 
                         <!-- Clinic Location -->
                         <div>
                             <x-input-label for="clinic_location" :value="__('Clinic Location')" />
-                            <x-text-input id="clinic_location" name="clinic_location" type="text" class="mt-1 block w-full" :value="old('clinic_location')" required />
+                            <x-text-input id="clinic_location" name="clinic_location" type="text" class="mt-1 block w-full" :value="old('clinic_location')" />
                             <x-input-error :messages="$errors->get('clinic_location')" class="mt-2" />
                         </div>
 
@@ -34,7 +34,7 @@
                                 <input type="hidden" name="clinician_id" value="{{ auth()->id() }}">
                                 <p class="mt-1 text-sm text-gray-500">You are automatically assigned as the clinician.</p>
                             @else
-                                <select id="clinician_id" name="clinician_id" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" required>
+                                <select id="clinician_id" name="clinician_id" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
                                     <option value="">Select Clinician</option>
                                     @foreach($clinicians as $clinician)
                                         <option value="{{ $clinician->id }}" {{ old('clinician_id') == $clinician->id ? 'selected' : '' }}>
@@ -49,14 +49,14 @@
                         <!-- Appointment Date -->
                         <div>
                             <x-input-label for="appointment_date" :value="__('Appointment Date & Time')" />
-                            <x-text-input id="appointment_date" name="appointment_date" type="datetime-local" class="mt-1 block w-full" :value="old('appointment_date')" required />
+                            <x-text-input id="appointment_date" name="appointment_date" type="datetime-local" class="mt-1 block w-full" :value="old('appointment_date')" />
                             <x-input-error :messages="$errors->get('appointment_date')" class="mt-2" />
                         </div>
 
                         <!-- Status -->
                         <div>
                             <x-input-label for="status" :value="__('Status')" />
-                            <select id="status" name="status" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" required>
+                            <select id="status" name="status" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
                                 <option value="booked" {{ old('status', 'booked') == 'booked' ? 'selected' : '' }}>Booked</option>
                                 <option value="completed" {{ old('status') == 'completed' ? 'selected' : '' }}>Completed</option>
                                 <option value="cancelled" {{ old('status') == 'cancelled' ? 'selected' : '' }}>Cancelled</option>
@@ -80,5 +80,30 @@
             </div>
         </div>
     </div>
+
+    @push('scripts')
+    <style>
+        /* Ensure all error messages are red */
+        .text-red-500,
+        .text-red-600,
+        [id$="_error"] {
+            color: #dc2626 !important;
+            font-weight: 500;
+        }
+        
+        /* Style input-error component messages */
+        .text-sm.text-red-600,
+        .text-sm.text-red-600 li {
+            color: #dc2626 !important;
+            font-weight: 500;
+        }
+        
+        /* Error border for invalid fields */
+        .border-red-500 {
+            border-color: #dc2626 !important;
+            border-width: 2px;
+        }
+    </style>
+    @endpush
 </x-app-layout>
 

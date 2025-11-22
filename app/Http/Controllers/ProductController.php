@@ -29,6 +29,15 @@ class ProductController extends Controller
                 $query->where('products.user_id', Auth::id());
             }
 
+            // Apply custom filters
+            if ($request->has('category_id') && $request->category_id != '') {
+                $query->where('products.category_id', $request->category_id);
+            }
+
+            if ($request->has('status') && $request->status != '') {
+                $query->where('products.status', $request->status);
+            }
+
             return DataTables::of($query)
                 ->addColumn('category_name', function ($product) {
                     return $product->category->name ?? '-';
@@ -54,12 +63,12 @@ class ProductController extends Controller
                     $deleteUrl = route('products.destroy', $product->id);
                     
                     $buttons = '<div class="flex space-x-2">';
-                    $buttons .= '<a href="' . $showUrl . '" class="px-3 py-1 text-sm text-blue-600 bg-blue-100 rounded hover:bg-blue-200">View</a>';
-                    $buttons .= '<a href="' . $editUrl . '" class="px-3 py-1 text-sm text-green-600 bg-green-100 rounded hover:bg-green-200">Edit</a>';
+                    $buttons .= '<a href="' . $showUrl . '" style="background-color: #2563eb; color: #ffffff; padding: 0.375rem 0.75rem; border-radius: 0.375rem; font-weight: 500; font-size: 0.875rem; text-decoration: none; display: inline-block; transition: background-color 0.15s ease-in-out;" onmouseover="this.style.backgroundColor=\'#1d4ed8\'" onmouseout="this.style.backgroundColor=\'#2563eb\'">View</a>';
+                    $buttons .= '<a href="' . $editUrl . '" style="background-color: #16a34a; color: #ffffff; padding: 0.375rem 0.75rem; border-radius: 0.375rem; font-weight: 500; font-size: 0.875rem; text-decoration: none; display: inline-block; transition: background-color 0.15s ease-in-out;" onmouseover="this.style.backgroundColor=\'#15803d\'" onmouseout="this.style.backgroundColor=\'#16a34a\'">Edit</a>';
                     $buttons .= '<form method="POST" action="' . $deleteUrl . '" class="inline" onsubmit="return confirm(\'Are you sure you want to delete this product?\');">';
                     $buttons .= csrf_field();
                     $buttons .= method_field('DELETE');
-                    $buttons .= '<button type="submit" class="px-3 py-1 text-sm text-red-600 bg-red-100 rounded hover:bg-red-200">Delete</button>';
+                    $buttons .= '<button type="submit" style="background-color: #dc2626; color: #ffffff; padding: 0.375rem 0.75rem; border-radius: 0.375rem; font-weight: 500; font-size: 0.875rem; border: none; cursor: pointer; transition: background-color 0.15s ease-in-out;" onmouseover="this.style.backgroundColor=\'#b91c1c\'" onmouseout="this.style.backgroundColor=\'#dc2626\'">Delete</button>';
                     $buttons .= '</form>';
                     $buttons .= '</div>';
                     

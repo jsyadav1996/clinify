@@ -15,7 +15,7 @@
                         <!-- Category -->
                         <div>
                             <x-input-label for="category_id" :value="__('Category')" />
-                            <select id="category_id" name="category_id" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" required>
+                            <select id="category_id" name="category_id" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
                                 <option value="">Select Category</option>
                                 @foreach($categories as $category)
                                     <option value="{{ $category->id }}" {{ old('category_id') == $category->id ? 'selected' : '' }}>
@@ -30,7 +30,7 @@
                         <!-- Subcategory -->
                         <div>
                             <x-input-label for="subcategory_id" :value="__('Subcategory')" />
-                            <select id="subcategory_id" name="subcategory_id" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" required disabled>
+                            <select id="subcategory_id" name="subcategory_id" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" disabled>
                                 <option value="">Select Subcategory</option>
                             </select>
                             <x-input-error :messages="$errors->get('subcategory_id')" class="mt-2" />
@@ -40,7 +40,7 @@
                         <!-- Product Name -->
                         <div>
                             <x-input-label for="name" :value="__('Product Name')" />
-                            <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name')" required />
+                            <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name')" />
                             <x-input-error :messages="$errors->get('name')" class="mt-2" />
                             <span id="name_error" class="text-red-500 text-sm hidden"></span>
                         </div>
@@ -48,7 +48,7 @@
                         <!-- Price -->
                         <div>
                             <x-input-label for="price" :value="__('Price')" />
-                            <x-text-input id="price" name="price" type="number" step="0.01" min="0" class="mt-1 block w-full" :value="old('price')" required />
+                            <x-text-input id="price" name="price" type="number" step="0.01" min="0" class="mt-1 block w-full" :value="old('price')" />
                             <x-input-error :messages="$errors->get('price')" class="mt-2" />
                             <span id="price_error" class="text-red-500 text-sm hidden"></span>
                         </div>
@@ -56,7 +56,7 @@
                         <!-- Quantity -->
                         <div>
                             <x-input-label for="quantity" :value="__('Quantity')" />
-                            <x-text-input id="quantity" name="quantity" type="number" min="0" class="mt-1 block w-full" :value="old('quantity', 0)" required />
+                            <x-text-input id="quantity" name="quantity" type="number" min="0" class="mt-1 block w-full" :value="old('quantity', 0)" />
                             <x-input-error :messages="$errors->get('quantity')" class="mt-2" />
                             <span id="quantity_error" class="text-red-500 text-sm hidden"></span>
                         </div>
@@ -64,7 +64,7 @@
                         <!-- Status -->
                         <div>
                             <x-input-label for="status" :value="__('Status')" />
-                            <select id="status" name="status" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" required>
+                            <select id="status" name="status" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
                                 <option value="active" {{ old('status', 'active') == 'active' ? 'selected' : '' }}>Active</option>
                                 <option value="inactive" {{ old('status') == 'inactive' ? 'selected' : '' }}>Inactive</option>
                             </select>
@@ -91,6 +91,28 @@
     </div>
 
     @push('scripts')
+    <style>
+        /* Ensure all error messages are red */
+        .text-red-500,
+        .text-red-600,
+        [id$="_error"] {
+            color: #dc2626 !important;
+            font-weight: 500;
+        }
+        
+        /* Style input-error component messages */
+        .text-sm.text-red-600,
+        .text-sm.text-red-600 li {
+            color: #dc2626 !important;
+            font-weight: 500;
+        }
+        
+        /* Error border for invalid fields */
+        .border-red-500 {
+            border-color: #dc2626 !important;
+            border-width: 2px;
+        }
+    </style>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function() {
