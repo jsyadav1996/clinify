@@ -1,0 +1,238 @@
+.login-container {
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto;
+}
+
+/* Header Styles */
+.login-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.logo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.logo-icon {
+    width: 64px;
+    height: 64px;
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.3);
+}
+
+.app-name {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin: 0;
+    letter-spacing: -0.025em;
+}
+
+.app-tagline {
+    font-size: 0.875rem;
+    color: #6b7280;
+    margin: 0;
+    font-weight: 500;
+}
+
+/* Form Styles */
+.login-form {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 0.5rem;
+}
+
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-icon {
+    position: absolute;
+    left: 1rem;
+    width: 1.25rem;
+    height: 1.25rem;
+    color: #9ca3af;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.form-input {
+    width: 100%;
+    padding: 0.75rem 1rem 0.75rem 2.75rem;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 0.9375rem;
+    transition: all 0.2s;
+    background-color: #f9fafb;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: #3b82f6;
+    background-color: white;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* Form Options */
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: #6b7280;
+    cursor: pointer;
+}
+
+.checkbox {
+    width: 1rem;
+    height: 1rem;
+    border: 2px solid #d1d5db;
+    border-radius: 4px;
+    cursor: pointer;
+    accent-color: #3b82f6;
+}
+
+.forgot-password-link {
+    font-size: 0.875rem;
+    color: #3b82f6;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.forgot-password-link:hover {
+    color: #2563eb;
+    text-decoration: underline;
+}
+
+/* Form Actions */
+.form-actions {
+    margin-bottom: 1.5rem;
+}
+
+.login-button {
+    width: 100%;
+    padding: 0.875rem 1.5rem;
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: all 0.2s;
+    box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.3);
+}
+
+.login-button:hover {
+    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 12px -2px rgba(59, 130, 246, 0.4);
+}
+
+.login-button:active {
+    transform: translateY(0);
+}
+
+.button-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+}
+
+/* Register Section */
+.register-section {
+    text-align: center;
+    padding-top: 1.5rem;
+    border-top: 1px solid #e5e7eb;
+}
+
+.register-text {
+    font-size: 0.875rem;
+    color: #6b7280;
+    margin: 0;
+}
+
+.register-link {
+    color: #3b82f6;
+    text-decoration: none;
+    font-weight: 600;
+    margin-left: 0.25rem;
+    transition: color 0.2s;
+}
+
+.register-link:hover {
+    color: #2563eb;
+    text-decoration: underline;
+}
+
+/* Error Messages */
+.text-red-600,
+.text-red-600 li {
+    color: #dc2626 !important;
+    font-weight: 500;
+}
+
+.error-message {
+    display: block;
+    color: #dc2626;
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin-top: 0.5rem;
+    display: none;
+}
+
+.error-message.show {
+    display: block;
+}
+
+.form-input.error {
+    border-color: #dc2626 !important;
+    background-color: #fef2f2;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+    .login-form {
+        padding: 1.5rem;
+    }
+
+    .app-name {
+        font-size: 1.75rem;
+    }
+}
+
